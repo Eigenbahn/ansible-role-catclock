@@ -1,0 +1,12 @@
+---
+# defaults file for eigenbahn.catclock
+
+catclock_force_reinstall: no
+
+catclock_bin_name: catclock
+catclock_install_folder: /usr/local/bin
+
+# compilation flags
+catclock_with_tempo_tracker: false
+
+catclok_temp_folder: /tmp

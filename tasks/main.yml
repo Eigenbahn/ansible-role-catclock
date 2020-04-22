@@ -1,0 +1,11 @@
+---
+# tasks file for eigenbahn.catclock
+
+- name: catclock | installed?
+  shell: command -v {{ catclock_bin_name }} >/dev/null 2>&1
+  register: catclock_is_installed
+  ignore_errors: yes
+  changed_when: False
+
+- when: catclock_is_installed.rc != 0 or catclock_force_reinstall
+  include: install.yml

@@ -1,0 +1,45 @@
+---
+# tasks/install file for eigenbahn.catclock
+
+- name: catclock | deps - motif
+  apt:
+    name: libmotif-dev
+
+- name: catclock | deps - audio
+  when: catclock_with_tempo_tracker
+  apt:
+    name:
+      - libaubio5
+      - libaubio-dev
+
+- name: catclock | init build params
+  set_fact:
+    catclock_build_params:
+
+- name: catclock | set tempo_tracker build params
+  when: catclock_with_tempo_tracker
+  set_fact:
+    catclock_build_params:
+      WITH_TEMPO_TRACKER: 1
+
+- name: catclock | get src
+  git:
+    repo: '{{ catclok_git_repo }}'
+    dest: '{{ catclok_temp_folder }}/catclok'
+
+- name: catclock | build
+  make:
+    chdir: '{{ catclok_temp_folder }}/catclok'
+    params: '{{ catclock_build_params }}'
+
+- name: catclock | install
+  copy:
+    remote_src: yes
+    src: '{{ catclok_temp_folder }}/catclok/xclock'
+    dest: '{{ catclock_install_folder }}/{{ catclock_bin_name }}'
+    mode: 0755
+
+- name: catclock | remove src
+  file:
+    path: '{{ catclok_temp_folder }}/catclok'
+    state: absent
