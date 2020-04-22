@@ -9,4 +9,4 @@ catclock_install_folder: /usr/local/bin
 # compilation flags
 catclock_with_tempo_tracker: false
 
-catclok_temp_folder: /tmp
+catclock_temp_folder: /tmp

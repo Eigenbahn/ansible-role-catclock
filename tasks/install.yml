@@ -24,22 +24,22 @@
 
 - name: catclock | get src
   git:
-    repo: '{{ catclok_git_repo }}'
-    dest: '{{ catclok_temp_folder }}/catclok'
+    repo: '{{ catclock_git_repo }}'
+    dest: '{{ catclock_temp_folder }}/catclock'
 
 - name: catclock | build
   make:
-    chdir: '{{ catclok_temp_folder }}/catclok'
+    chdir: '{{ catclock_temp_folder }}/catclock'
     params: '{{ catclock_build_params }}'
 
 - name: catclock | install
   copy:
     remote_src: yes
-    src: '{{ catclok_temp_folder }}/catclok/xclock'
+    src: '{{ catclock_temp_folder }}/catclock/xclock'
     dest: '{{ catclock_install_folder }}/{{ catclock_bin_name }}'
     mode: 0755
 
 - name: catclock | remove src
   file:
-    path: '{{ catclok_temp_folder }}/catclok'
+    path: '{{ catclock_temp_folder }}/catclock'
     state: absent
