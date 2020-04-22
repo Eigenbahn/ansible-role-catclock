@@ -3,6 +3,9 @@ eigenbahn.catclock
 
 Install [catclock](https://github.com/BarkyTheDog/catclock), a fork of `xclock` with an additional `cat` mode.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/BarkyTheDog/catclock/master/catclock.gif">
+</p>
 
 Requirements
 ------------
