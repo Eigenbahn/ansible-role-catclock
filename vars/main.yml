@@ -1,4 +1,4 @@
 ---
 # vars file for eigenbahn.catclock
 
-catclok_git_repo: https://github.com/BarkyTheDog/catclock
+catclock_git_repo: https://github.com/BarkyTheDog/catclock
